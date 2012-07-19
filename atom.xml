@@ -1,0 +1,32 @@
+---
+layout: nil
+---
+<?xml version="1.0"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+  <title>MightyHQ</title>
+  <link href="http://ajct.info/"/>
+  <link type="application/atom+xml" rel="self" href="http://ajct.info/atom.xml"/>
+  <updated>{{ site.time | date_to_xmlschema }}</updated>
+  <id>http://mightyhq.co.uk/</id>
+  <author>
+    <name>Adam Taylor</name>
+    <email>adamjctaylor@gmail.com</email>
+  </author>
+
+  {% for post in site.posts %}
+  <entry>
+    <id>http://mightyhq.co.uk{{ post.id }}</id>
+    <link type="text/html" rel="alternate" href="http://mightyhq.co.uk{{ post.url }}"/>
+    <title>{{ post.title }}</title>
+    <updated>{{ post.date | date_to_xmlschema }}</updated>
+    <author>
+      <name>Adam Taylor</name>
+      <uri>http://mightyhq.co.uk/</uri>
+    </author>
+    <content type="html">{{ post.content | xml_escape }}</content>
+  </entry>
+  {% endfor %}
+ 
+</feed>
+<!-- thank you: https://github.com/coyled/coyled.com/blob/master/atom.xml -->
